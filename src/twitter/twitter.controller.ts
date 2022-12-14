@@ -7,6 +7,6 @@ export class TwitterController {
     constructor(private twitterService : TwitterService) {}
     @Post("download")
     async installVideo(@Body() twitterVideoDto : TwitterVideoDTO ) : Promise<string> {
-
+        if(twitterVideoDto.link == undefined || twitterVideoDto.link)
     }
 }
