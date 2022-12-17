@@ -55,6 +55,14 @@ describe("Twitter basic tests", () => {
         const res = await twitterService.getTwitterLink("https://twitter.com/EuTwistedF8/status/1603430407483150342")
         expect(res.link).not.toEqual(undefined)
     })
+    it("should give the actual MOBILE link since a valid link was given and was searchable", async () => {
+        const res = await twitterService.getTwitterLink("https://mobile.twitter.com/EuTwistedF8/status/1603430407483150342")
+        expect(res.link).not.toEqual(undefined)
+    })
+    it("should give the actual WWW link since a valid link was given and was searchable", async () => {
+        const res = await twitterService.getTwitterLink("https://www.twitter.com/EuTwistedF8/status/1603430407483150342")
+        expect(res.link).not.toEqual(undefined)
+    })
     it("should return error since the link was not searchable but matched regex", async () => {
         try {
             await twitterService.getTwitterLink("https://twitter.com/EuTwisted8/status/1603430407483150342")
