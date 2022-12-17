@@ -3,7 +3,7 @@ import { Test } from "@nestjs/testing";
 import { YoutubeController } from "./youtube.controller"; 
 import { YoutubeService } from "./youtube.service";
 
-describe("YoutubeController", () => {
+describe("Youtube basic tests", () => {
     let youtubeController : YoutubeController
     let youtubeService : YoutubeService
     beforeEach(async() => {
@@ -20,7 +20,7 @@ describe("YoutubeController", () => {
             try {
                 await youtubeController.installVideo({"link" : ""})
             } catch(err) {
-                await expect(err).toEqual(new HttpException('Missing Link Parameter', HttpStatus.UNPROCESSABLE_ENTITY))
+                await expect(err.name).toEqual("HttpException")
             }
         })
     })
@@ -29,14 +29,14 @@ describe("YoutubeController", () => {
             try {
                 await youtubeService.getYoutubeLink("")
             } catch(err) {
-                await expect(err).toEqual(new Error('Invalid link argument was passed'))
+                await expect(err.name).toEqual("Error")
             }
         })
         it("should throw an Error displaying that it was an invalid link from an undefined link", async() => {
             try {
                 await youtubeService.getYoutubeLink(undefined)
             } catch(err) {
-                await expect(err).toEqual(new Error('Invalid link argument was passed'))
+                await expect(err.name).toEqual("Error")
             }
         })
         it("should reject since the link was not a searchable one/ a 404 link", async() => {

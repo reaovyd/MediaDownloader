@@ -4,6 +4,6 @@ import { YoutubeModule } from './youtube/youtube.module';
 import { TwitterModule } from './twitter/twitter.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), YoutubeModule, TwitterModule],
+  imports: [ConfigModule.forRoot({ isGlobal: true }), YoutubeModule, TwitterModule],
 })
 export class AppModule {}
