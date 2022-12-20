@@ -30,6 +30,7 @@
     "axios": "^1.2.1",
     "cache-manager": "^4.0.0",
     "cache-manager-redis-store": "^2.0.0",
+    "instagram-web-api": "^2.2.2",
     "re2": "^1.18.0",
     "redis": "3.1.2",
     "reflect-metadata": "^0.1.13",
