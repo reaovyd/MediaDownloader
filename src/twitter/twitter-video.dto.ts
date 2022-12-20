@@ -1,3 +1,3 @@
 export class TwitterVideoDTO {
-    link: string
+  link: string;
 }

@@ -10,7 +10,7 @@ import { YoutubeService } from './youtube.service';
 
 @Controller('youtube')
 export class YoutubeController {
-  constructor(private youtubeService : YoutubeService) {}
+  constructor(private youtubeService: YoutubeService) {}
   @Post('download')
   async installVideo(@Body() videoBodyRequest: YoutubeVideoDTO) {
     const link = videoBodyRequest.link;
@@ -21,15 +21,12 @@ export class YoutubeController {
       );
     }
     try {
-      const ret = await this.youtubeService.getYoutubeLink(link)
+      const ret = await this.youtubeService.getYoutubeLink(link);
       return {
-        "link" : ret
-      }
-    }catch(err) {
-      throw new HttpException(
-        err,
-        HttpStatus.UNPROCESSABLE_ENTITY
-      )
+        link: ret,
+      };
+    } catch (err) {
+      throw new HttpException(err, HttpStatus.UNPROCESSABLE_ENTITY);
     }
   }
 }
